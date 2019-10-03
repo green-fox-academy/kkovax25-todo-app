@@ -9,8 +9,9 @@ const fs = require('fs'); // for writing into files (don't forget to use npm i @
 const args: string[] = process.argv; //for using command line arguments. Don't forget that it is a string array w/ atleast 2 elements already!!!
 
 let task = fs.readFileSync("./task.txt", "utf-8")
-// let writeList = fs.writeFileSync('listitems.txt', "Hello")
 let readList = fs.readFileSync("./listitems.txt", "utf-8")
+let addText: string = "";
+let text: string;
 
 let mainProcess = () => {
 
@@ -28,11 +29,28 @@ let mainProcess = () => {
       }
     }
 
-  } // else if (args[2] == '-a') {
-  // }
+  }
+
+
+
+
+
+  else if (args[2] == '-a') {
+    if (args[3] != undefined) {
+      console.log(args[3]);
+
+      fs.appendFileSync('listitems.txt', args[3] + "\n", "utf-8")
+    }
+  }
+
+
+
+
+
+
 
   else {
-    console.log('this is the error handling');
+    console.log('You fucked it up try again');
   }
 }
 mainProcess();
